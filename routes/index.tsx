@@ -36,7 +36,7 @@ function Apps({ items }: { items: Project[] }) {
   return (
     <section class="max-w-screen-lg mx-auto my-16 px(4 sm:6 md:8) space-y-4">
       <h2 class="text(3xl gray-600) font-bold">
-        N/S Apps
+        Nuller Apps
       </h2>
       <p class="text-gray-600">
         N/S高生の開発チーム『Nuller』が開発したアプリたちです。
