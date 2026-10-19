@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuller Apps｜N/S高生が開発するアプリ</title>
+  <meta name="description" content="N/Sの開発チーム『Nuller』が手がけるアプリたちの一覧です。Googleアカウントのログインは必要ありません。">
+  <meta property="og:title" content="Nuller Apps｜N/S高生が開発するアプリ">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="N/Sの開発チーム『Nuller』が手がけるアプリたちの一覧です。Googleアカウントのログインは必要ありません。">
+  <meta property="og:image" content="/home-og.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="wrap">
+    <h2>Nuller Apps</h2>
+    <p>N/S高生の開発チーム『Nuller』が開発したアプリたちです。</p>
+    <div class="grid" id="apps"></div>
+  </section>
+  <script>
+    // 一覧は apps.json を書き換えるだけで更新できる
+    fetch('apps.json').then(r => r.json()).then(apps => {
+      const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+      document.getElementById('apps').innerHTML = apps.filter(a => a.link).map(a =>
+        `<div class="card"><a href="${esc(a.link)}" tabindex="-1"><img loading="lazy" src="app/${esc(a.image)}.png" alt="${esc(a.title)}" width="600" height="337"></a><div class="title"><a href="${esc(a.link)}">${esc(a.title)}</a></div></div>`
+      ).join('');
+    });
+  </script>
+</body>
+</html>
